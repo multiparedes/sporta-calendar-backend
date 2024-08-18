@@ -16,7 +16,8 @@ services:
       - ./:/app
       - /app/node_modules
     command:
-      sh -c "/app/node_modules/.bin/nodemon --legacy-watch /app/src/index.js"
+      sh -c "npx prisma migrate deploy --schema=src/prisma/schema.prisma &&
+      /app/node_modules/.bin/nodemon --legacy-watch /app/src/index.js"
     networks:
       - back-tier
 
